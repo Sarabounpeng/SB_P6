@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const workContainer = document.getElementById('gallery');
     const categoriesContainer = document.getElementById('filter');
-
     
 // work API start
 
@@ -14,13 +13,14 @@ fetch('http://localhost:5678/api/works')
 })
 .then(data => {
     // Check if data is an array
-    if (Array.isArray(data)) { 
-        // Clear the container
-        workContainer.textContent = '';
 
+    if (Array.isArray(data)) { 
         // Loop through the data and create list items
         for (const item of data) {
             const figure = document.createElement('figure');
+            figure.classList.add('work-blocks');
+            figure.classList.add('all');
+            figure.classList.add(`filter_${item.categoryId}`);
         figure.innerHTML = 
             `<img src="${item.imageUrl}" alt="${item.title}">
             <figcaption>${item.title}</figcaption>`
@@ -36,6 +36,7 @@ fetch('http://localhost:5678/api/works')
     workContainer.textContent = 'Error loading data';
 });
 // work API end
+
 // categories API start
 fetch('http://localhost:5678/api/categories') 
 .then (response=>{
@@ -48,8 +49,9 @@ fetch('http://localhost:5678/api/categories')
  if (Array.isArray(data)){
      for (const item of data){
          const filter = document.createElement('span');
-         filter.innerHTML=
-         `<span " ${item.categoryId}"> `;
+         filter.classList.add('category-filter');
+         filter.dataset.category= `filter_${item.id}`
+         filter.innerHTML=`${item.name} `;
          categoriesContainer.appendChild(filter);
 
      }
@@ -63,4 +65,6 @@ fetch('http://localhost:5678/api/categories')
  categoriesContainer.textContent = 'Error loading data'
 });
 // categories API end
+
+
 });
