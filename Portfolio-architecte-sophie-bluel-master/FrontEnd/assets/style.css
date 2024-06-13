@@ -199,12 +199,19 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+
+	&:hover{
+		background-color: #052c26;
+		color:white;
+	}
 }
+
 
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
 }
-
-.d-none{display:none;}
+.d-none{
+	display: none;
+}

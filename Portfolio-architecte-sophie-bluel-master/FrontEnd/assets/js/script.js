@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const workContainer = document.getElementById('gallery');
     const categoriesContainer = document.getElementById('filter');
-    
+
 // work API start
 
 fetch('http://localhost:5678/api/works')
@@ -66,5 +66,15 @@ fetch('http://localhost:5678/api/categories')
 });
 // categories API end
 
+
+function Class(e, className) {
+    return e.className.split ('') .indexOf > -1;
+}
+document.addEventListener('click', function(e){
+    if (Class(e.target, 'category-filter')){
+        let category = e.target.getAttribute('data-category');
+        let workBlock = document.querySelectorAll('.workBlock');
+    }
+})
 
 });
