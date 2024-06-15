@@ -85,17 +85,4 @@ fetch('http://localhost:5678/api/categories')
  categoriesContainer.textContent = 'Error loading data'
 });
 // categories API end
-
-
-/*function Class(e, className) {
-    return e.className.split ('') .indexOf > -1;
-}
-nouvelleElement.addEventListener('click', function(e){
-    if (Class(e.target, 'category-filter')){
-        let category = e.target.getAttribute('data-category');
-        let workBlock = document.querySelectorAll('.workBlock');
-    }
-})*/
-
-
 });
