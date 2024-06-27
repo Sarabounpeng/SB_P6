@@ -56,10 +56,8 @@ fetch('http://localhost:5678/api/categories')
 
          filter.addEventListener('click', function(e){
             // Select all elements with the class 'category-filter'
-            function hasClass(e, className) {
-             return e.className.split(' ').indexOf(className) > -1;
-            }
-            if(hasClass(e.target, 'category-filter')){
+        
+            if(e.target.classList.contains('category-filter')){
                 var category = e.target.getAttribute('data-category');
                 console.log(category);
         
@@ -86,3 +84,45 @@ fetch('http://localhost:5678/api/categories')
 });
 // categories API end
 });
+
+document.getElementById('all-category').addEventListener('click', function(){
+var workBlock= document.querySelectorAll('.work-blocks');
+workBlock.forEach(function(element){
+    element.style.display='block';
+});
+});
+
+
+
+async function login() {
+    let user= document.getElementById("user");
+    let password = document.getElementById("password");
+    const details = {
+        email : user.value,
+        password : password.value
+    } 
+    console.log(details);
+    try {
+        const response = await fetch("http://localhost:5678/api/users/login",{
+         method:"POST",
+         headers:{
+            "Content-Type":"application/json"
+
+         },
+         body: JSON.stringify(details)
+
+        });
+        const data = await response.json();
+        if (!response.ok){
+            document.getElementById("message").innerText=data.message;
+        }
+        localStorage.setItem('user-access', data.token ||json.stringify(data));
+        document.getElementById("message").innerText="user login"
+       // onclick="login();"
+
+    } 
+    catch(error){
+        document.getElementById("message").innerText="wrong password"
+
+    }
+}
