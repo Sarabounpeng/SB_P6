@@ -9,6 +9,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <header>
@@ -36,7 +39,7 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets   <a id="editWork" href="upload-work.html" class="d-none"><span>&#10000;</span> Modifier</a></h2>
+		<h2>Mes Projets   <a id="editWork" href="#" class="d-none"><span>&#10000;</span> Modifier</a></h2>
 		<div id="filter">
 		<span class="category-filter" id="all-category" data-category="all"> Tous </span>
 		</div>
@@ -66,9 +69,23 @@
 		</ul>
 	</nav>
 </footer>
+<div class="model d-none" id="workslist" >
+	<span class="overlay"></span>
+	<div class="upload-work-wrapper">
+		<div class="form-layout">
+			<h2>Galerie photo<h2>
 
+					<section class="galerie" id="galerie">
+						
+					</section>
+					<div class="ajouter">
+						<input type="submit" value="Ajouter une photo" id="btn-ajout">
+					</div>
+		</div>
+	</div>
+</div>
 
-<div class="model" id="uploadwork">
+<div class="model d-none" id="uploadwork">
 	<span class="overlay"></span>
 	<div class="upload-work-wrapper">
 		<div class="form-layout">
@@ -95,37 +112,6 @@
         </div>
 	</div>
 </div>
-
-<!--JS-->
-<script>
-	document.getElementById('uploadForm').addEventListener('submit', async function(event) {
-		event.preventDefault(); // Prevent the default form submission
-
-		const formData = new FormData(this); // Create a FormData object with the form data
-
-		try {
-			const response = await fetch('http://localhost:5678/api/works', {
-				method: 'POST',
-				headers: {
-					'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Include the auth token in the headers
-				},
-				body: formData // Send the form data
-			});
-
-			if (response.ok) {
-				const result = await response.json();
-				console.log('Work uploaded successfully:', result);
-				window.location.href = 'index.html';
-				// Redirect to a different page or display a success message
-			} else {
-				const error = await response.json();
-				console.error('Upload failed:', error.message);
-			}
-		} catch (error) {
-			console.error('Network error:', error);
-		}
-	});
-</script>
 
 
 <script src="assets/js/script.js"></script>
