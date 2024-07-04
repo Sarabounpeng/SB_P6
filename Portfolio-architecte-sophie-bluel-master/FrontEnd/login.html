@@ -10,50 +10,95 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
-<body id ="stle.css">
-    <header>
-        <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-        <nav>
-            <ul>
-                <li>projets</li>
-
-                    <a href="./index.html">
-                        <li>contact</li>
-                    </a>
-                <li>login</li>
-                <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-            </ul>
-        </nav>
-    </header>
-    <section id="login">
-        <h2>Log In</h2>
-    <form>
-        <label for="email">E-mail</label>
-        <input type="text" id="id">
-        
-        <br>
-        <label for="email">Mot de passe</label>
-        <input type="text" id="password">
-
-        
-        <input type="submit" value="Se connecter">
-
-        <nav>
-        <ul>
-			<li>Mot de passe oublié</li>
+<body>
+<header>
+	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	<nav>
+		<ul>
+			<li>projets</li>
+			<li>contact</li>
+			<li id="login">login</li>
+            <li id="logout" class="d-none">Logout</li>
+			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
-    </nav>
-       
-    </form>
-</section>
-    <span id="message"></span>
-    <footer>
-        <nav>
+	</nav>
+</header>
+<main>
+    <div class="form-layout">
+        <h2>Login</h2>
+        <span id="message"></span>
+        <form id="loginForm">
+            <label for="id">E-mail</label>
+            <input type="email" id="email">
+            
+            <br>
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password">
+    
+            
+            <input type="submit" value="Se connecter">
+    
+            <nav>
             <ul>
-                <li>Mentions Légales</li>
+                <li>Mot de passe oublié</li>
             </ul>
-        </nav>
-    </footer>
-    <script src="assets/js/script.js"></script>
+            </nav>
+           
+        </form>
+    </div>
+</main>
+
+<footer>
+	<nav>
+		<ul>
+			<li>Mentions Légales</li>
+		</ul>
+	</nav>
+</footer>
+<script>
+    // Define the login function
+async function login(email, password) {
+    const url = 'http://localhost:5678/api/users/login';
+    const data = { email, password };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log('Login successful:', result);
+            // Save token to localStorage
+            localStorage.setItem('authToken', result.token);
+            window.location.href = 'index.html';
+        } else {
+            console.error('Login failed:', response.statusText);
+            document.getElementById("message").innerText = response.statusText;
+        }
+    } catch (error) {
+        console.error('Network error:', error);
+        document.getElementById("message").innerText = error;
+    }
+}
+
+// Attach an event listener to the form
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the values from the form inputs
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Call the login function
+    login(email, password);
+});
+</script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
+

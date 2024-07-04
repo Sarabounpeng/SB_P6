@@ -93,7 +93,6 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
-	cursor: pointer;
 }
 
 li:hover {
@@ -200,7 +199,6 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
-	cursor: pointer;
 
 	&:hover{
 		background-color: #052c26;
@@ -215,38 +213,45 @@ footer nav ul {
 	margin: 2em
 }
 .d-none{
-	display: none;
+	display: none !important;
 }
 
-#login {
+#editWork{font-size: 14px; color: #777; cursor: pointer; text-decoration: none;}
+#editWork span{
+	display: inline-block;
+	transform-origin: center;
+	transform: rotate(180deg);
+}
+
+.form-layout {
 	width: 50%;
 margin: auto;
 text-decoration: none;
 }
-#login > * {
+.form-layout > * {
 	text-align: center;
 
 }
-#login h2{
+.form-layout h2{
 	margin-bottom: 20px;
 }
-#login form {
+.form-layout form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#login input {
+.form-layout input {
     height: 50px;
     font-size: 1.2em;
     border: none;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#login label {
+.form-layout label {
 	margin: 2em 0 1em 0;
 }
-#login nav li {
+.form-layout nav li {
 	display: flex;
 	text-align: center;
 	padding: 0 10px;
@@ -254,7 +259,45 @@ text-decoration: none;
 	cursor: pointer;
 	
 }
-#login nav li:hover{
+.form-layout nav li:hover{
 	border-bottom: 1.5px solid gray;
+}
 
+.model{
+	position: fixed;
+	top:0;
+	left:0;
+	bottom: 0;
+	right:0
+}
+.model .overlay{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.model .upload-work-wrapper{
+	position: absolute;
+	width: 500px;
+	max-width: 90%;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 10px;
+	left: 50%;
+	top:50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+.model .form-layout{
+	width: 100%;
+}
+#upload_msg{
+	display: block;
+	margin: 15px 0;
+	padding: 15px;
+	border: 1px solid green;
+	border-radius: 10px;
+	color: green;
+	background-color: #1D615420;
 }

@@ -17,10 +17,8 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			
-				<a href="./login.html">
-					<li>login</li>
-				</a>
+			<li><a id="login" href="login.html">login</a></li>
+            <li id="logout" class="d-none">Logout</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -38,7 +36,7 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<h2>Mes Projets   <a id="editWork" href="upload-work.html" class="d-none"><span>&#10000;</span> Modifier</a></h2>
 		<div id="filter">
 		<span class="category-filter" id="all-category" data-category="all"> Tous </span>
 		</div>
@@ -68,6 +66,68 @@
 		</ul>
 	</nav>
 </footer>
+
+
+<div class="model" id="uploadwork">
+	<span class="overlay"></span>
+	<div class="upload-work-wrapper">
+		<div class="form-layout">
+            <h2>Upload New Work</h2>
+			<span id="upload_msg" class="d-none"></span>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <label for="title">Title</label>
+                <input id="title" type="text" name="title" placeholder="Title" required>
+                
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                    <!-- Populate categories dynamically -->
+                    <option value="1">Objets</option>
+                    <option value="2">Appartements</option>
+                    <option value="3">Hotels & restaurants</option>
+                    <!-- Add more categories as needed -->
+                </select>
+                
+                <label for="image">Image</label>
+                <input id="image" type="file" name="image" accept="image/*" required>
+                
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+	</div>
+</div>
+
+<!--JS-->
+<script>
+	document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+		event.preventDefault(); // Prevent the default form submission
+
+		const formData = new FormData(this); // Create a FormData object with the form data
+
+		try {
+			const response = await fetch('http://localhost:5678/api/works', {
+				method: 'POST',
+				headers: {
+					'Authorization': 'Bearer ' + localStorage.getItem('authToken') // Include the auth token in the headers
+				},
+				body: formData // Send the form data
+			});
+
+			if (response.ok) {
+				const result = await response.json();
+				console.log('Work uploaded successfully:', result);
+				window.location.href = 'index.html';
+				// Redirect to a different page or display a success message
+			} else {
+				const error = await response.json();
+				console.error('Upload failed:', error.message);
+			}
+		} catch (error) {
+			console.error('Network error:', error);
+		}
+	});
+</script>
+
+
 <script src="assets/js/script.js"></script>
 </body>
 </html>
