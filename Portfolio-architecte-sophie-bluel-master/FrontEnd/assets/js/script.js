@@ -38,7 +38,7 @@ async function showWork(){
                             ;
 
                             figurePopup.innerHTML =
-                            `<img src="${item.imageUrl}"> <span class="delete" id="${item.id}"><i class="fa-solid fa-trash-can" style="color: red;"></i></span>`;
+                            `<img src="${item.imageUrl}"> <span class="delete" id="${item.id}"><i class="fa-solid fa-trash-can" style="color: white;"></i></span>`;
                              
 
                         workContainer.appendChild(figure);
@@ -162,15 +162,37 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
 });
 
 
-document.getElementById('editWork').addEventListener('click', function(event){
-    document.getElementById('workslist').classList.remove('d-none');  
+const openModelButtons = document.querySelectorAll('.open-model');
+const models = document.querySelectorAll('.model');
+const closeModelButtons = document.querySelectorAll('.close-model');
+
+openModelButtons.forEach(button =>{
+button.addEventListener('click', function(){
+models.forEach(model =>{
+    model.classList.add('d-none');
 });
-document.getElementById('btn-ajout').addEventListener('click', function(event){
-    document.getElementById('workslist').classList.add('d-none');  
-    document.getElementById('uploadwork').classList.remove('d-none');  
+const target = this.getAttribute('data-target');
+document.getElementById(target).classList.remove('d-none'); 
+});
 });
 
-});
+closeModelButtons.forEach(button =>{
+    button.addEventListener('click', function(){
+    models.forEach(model =>{
+        model.classList.remove('d-none');
+    });
+    });
+    });
+
+    document.getElementById('editWork').addEventListener('click', function(event){
+        document.getElementById('workslist').classList.remove('d-none');  
+    });
+    document.getElementById('btn-ajout').addEventListener('click', function(event){
+        document.getElementById('workslist').classList.add('d-none');  
+        document.getElementById('uploadwork').classList.remove('d-none');  
+    });
+    
+    });
 
 
 

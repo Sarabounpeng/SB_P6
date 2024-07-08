@@ -337,6 +337,22 @@ text-decoration: none;
 	figure{
 		position: relative;
 	}
+	.fa-trash-can{
+		color: #fff;
+		background-color: black;
+		padding: 5px;
+		border-radius: 3px;
+
+	}
+	.model-icons{
+		display: flex;
+		justify-content: space-between;
+		font-size: 20px;
+	}
+	.model-icons i{
+		cursor: pointer;
+	}
+	
 	
 	
 		
