@@ -107,9 +107,15 @@
 				<h2>Upload New Work</h2>
 				<span id="upload_msg" class="d-none"></span>
 				<form id="uploadForm" enctype="multipart/form-data">
-
-					<label for="image">Image</label>
-					<input id="image" type="file" name="image" accept="image/*" required>
+					<div id="ajouter-photo">
+						<img src="" class="image-prev" id="image-prev">
+					<div id="file-input-design">
+					    <i class="fa-regular fa-image" style="color: #ced2d9;"></i>
+						<span class="upload-span-btn">+ Upload your Photo</span>	
+						<span>Text Message</span>
+					</div>
+					    <input id="image" type="file" name="image" accept="image/*" required>
+				    </div>
 					<label for="title">Title</label>
 					<input id="title" type="text" name="title" placeholder="Title" required>
 

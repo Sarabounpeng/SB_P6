@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     deleteWork(event.target.id);
                 })
                 let i = document.createElement("i");
-                i.classList.add("fa-solide");
+                i.classList.add("fa-solid");
                 i.classList.add("fa-trash-can");
                 span.appendChild(i);
                 figurePopup.appendChild(span);
@@ -205,6 +205,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+   
+    document.getElementById("image").addEventListener('change', function(event){
+        const file = event.target.files[0];
+        if(file){
+            const reader = new FileReader();
+            reader.onload = function(e){
+                const imgTag = document.getElementById('image-prev');
+                imgTag.src = e.target.result;
+                document.getElementById('file-input-design').classList.add('d-none');
+            };
+            reader.readAsDataURL(file);
+        }
+    } )
 
 
 });
