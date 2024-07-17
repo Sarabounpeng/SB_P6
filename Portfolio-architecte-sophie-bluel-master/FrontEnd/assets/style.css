@@ -94,6 +94,11 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
+#login{
+	font-weight: 700;
+	text-decoration: none;
+	color: black;
+}
 
 li:hover {
 	color: #B1663C;
@@ -387,6 +392,11 @@ text-decoration: none;
 		max-height:200px;
 		display: block;
 		margin: auto;
+	}
+	.mot-de-passe{
+		display: flex;
+		text-align: center;
+		margin: 30px;
 	}
 	
 	

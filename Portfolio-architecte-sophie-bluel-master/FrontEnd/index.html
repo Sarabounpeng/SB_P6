@@ -61,7 +61,7 @@
 			<form action="#" method="post">
 				<label for="name">Nom</label>
 				<input type="text" name="name" id="name">
-				<label for="email">Email</label>
+				<label for="email">E-mail</label>
 				<input type="email" name="email" id="email">
 				<label for="message">Message</label>
 				<textarea name="message" id="message" cols="30" rows="10"></textarea>
@@ -104,22 +104,22 @@
 				<i class="fa-solid fa-arrow-left open-model"data-target="workslist"></i>  <i class="fa-solid fa-xmark close-model"></i>
 			</div>
 			<div class="form-layout">
-				<h2>Upload New Work</h2>
+				<h2>Ajout photo</h2>
 				<span id="upload_msg" class="d-none"></span>
 				<form id="uploadForm" enctype="multipart/form-data">
 					<div id="ajouter-photo">
 						<img src="" class="image-prev" id="image-prev">
 					<div id="file-input-design">
 					    <i class="fa-regular fa-image" style="color: #ced2d9;"></i>
-						<span class="upload-span-btn">+ Upload your Photo</span>	
-						<span>Text Message</span>
+						<span class="upload-span-btn">+ Ajouter Photo</span>	
+						<span>jpg, png : 4mo max</span>
 					</div>
 					    <input id="image" type="file" name="image" accept="image/*" required>
 				    </div>
-					<label for="title">Title</label>
+					<label for="title">Titre</label>
 					<input id="title" type="text" name="title" placeholder="Title" required>
 
-					<label for="category">Category</label>
+					<label for="category">Catégorie</label>
 					<select id="category" name="category" required>
 						<!-- Populate categories dynamically -->
 						<option value="1">Objets</option>
@@ -128,7 +128,7 @@
 						<!-- Add more categories as needed -->
 					</select>
 
-					<input type="submit" value="Upload">
+					<input type="submit" value="Valider">
 				</form>
 			</div>
 		</div>

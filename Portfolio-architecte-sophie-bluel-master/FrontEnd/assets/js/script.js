@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    //open & close API
+    //open & close Models
     const openModelButtons = document.querySelectorAll('.open-model');
     const Models = document.querySelectorAll('.model');
     const CloseModels = document.querySelectorAll('.close-model');
@@ -189,10 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
             Models.forEach(model => {
                 model.classList.add('d-none');
             });
-            console.log(this);
             const target = this.getAttribute('data-target');
-            console.log(target);
-            console.log(document.getElementById(target));
+            
             document.getElementById(target).classList.remove('d-none');
 
         });
@@ -218,6 +216,9 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.readAsDataURL(file);
         }
     } )
+
+
+
 
 
 });
