@@ -22,6 +22,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	background-color: #FFFEF8;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -88,21 +89,31 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
+	justify-content: center;
 
 }
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+	cursor: pointer;
+	
+	  }
+	  nav li a {
+		text-decoration: none;
+		color: black;
 }
+	  
 #login{
 	font-weight: 700;
 	text-decoration: none;
 	color: black;
+	cursor: pointer;
 }
 
 li:hover {
 	color: #B1663C;
 }
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -215,7 +226,7 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
 }
 .d-none{
 	display: none !important;

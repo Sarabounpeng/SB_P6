@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const galerie = document.getElementById('galerie');
 
     // FETCH DATA FUNCTION
+    // getting data reponse and error from API
     async function fetchData(url) {
         try {
             const response = await fetch(url);
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // work API function
+    // to show all work at homepage and popup also called delete API to update our work
 
     async function showWork() {
         const data = await fetchData(`http://localhost:5678/api/works`);
@@ -66,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Category API function
+    // to show all category filters
 
     async function showCategories() {
         const data = await fetchData(`http://localhost:5678/api/categories`);
@@ -76,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 filter.dataset.category = `filter_${item.id}`
                 filter.innerHTML = `${item.name} `;
                 categoriesContainer.appendChild(filter);
+                console.log(category);
 
                 filter.addEventListener('click', function (e) {
                     // Select all elements with the class 'category-filter'
@@ -104,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Old code
+    // to show all works using category filters on click ALL (Tous)
 
     if (workContainer !== null) {
         showWork();
@@ -120,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // delete API
+    // suppression des traveaux en click
 
     async function deleteWork(itemID) {
         try {
@@ -140,16 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /*document.querySelector('body').addEventListener('click', function (event) {
-        if (event.target && event.target.matches(`span.delete`)) {
-            const spanID = event.target.id;
-            deleteWork(spanID);
-        }
-    })*/
-    
 
 
-    
+    // upload work (des images)
 
     document.getElementById('uploadForm').addEventListener('submit', async function (event) {
         event.preventDefault(); // Prevent the default form submission
@@ -179,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
     //open & close Models
     const openModelButtons = document.querySelectorAll('.open-model');
     const Models = document.querySelectorAll('.model');
@@ -203,6 +202,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // to show image prevu
+
    
     document.getElementById("image").addEventListener('change', function(event){
         const file = event.target.files[0];
@@ -218,14 +220,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } )
 
 
-
-
-
 });
 
 
 
 // Check if user is already logged in on page load
+
 window.onload = function () {
     const token = localStorage.getItem('authToken');
     if (token) {
@@ -254,3 +254,48 @@ function logout() {
 // Attach event listener to the logout button
 document.getElementById('logout').addEventListener('click', logout);
 
+
+
+
+
+// Define the login function
+async function login(email, password) {
+    const url = 'http://localhost:5678/api/users/login';
+    const data = { email, password };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log('Login successful:', result);
+            // Save token to localStorage
+            localStorage.setItem('authToken', result.token);
+            window.location.href = 'index.html';
+        } else {
+            console.error('Login failed:', response.statusText);
+            document.getElementById("message").innerText = response.statusText;
+        }
+    } catch (error) {
+        console.error('Network error:', error);
+        document.getElementById("message").innerText = error;
+    }
+}
+
+// Attach an event listener to the form
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the values from the form inputs
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Call the login function
+    login(email, password);
+});
