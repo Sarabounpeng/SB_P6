@@ -31,12 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
             for (const item of data) {
                 let figurePopup = document.createElement('figure');
                 let img = document.createElement('img');
-                img.src=item.imageUrl;
+                img.src = item.imageUrl;
                 figurePopup.appendChild(img);
                 let span = document.createElement('span');
                 span.classList.add("delete");
                 span.id = item.id
-                span.addEventListener("click", function(event){
+                span.addEventListener("click", function (event) {
                     deleteWork(event.target.id);
                 })
                 let i = document.createElement("i");
@@ -58,9 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                 workContainer.appendChild(figure);
-               
+
             }
-           
+
         } else {
             workContainer.textContent = 'Data format is not an array';
         }
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // delete API
-    // suppression des traveaux en click
+    // Delete work on click
 
     async function deleteWork(itemID) {
         try {
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 model.classList.add('d-none');
             });
             const target = this.getAttribute('data-target');
-            
+
             document.getElementById(target).classList.remove('d-none');
 
         });
@@ -205,19 +205,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // to show image prevu
 
-   
-    document.getElementById("image").addEventListener('change', function(event){
+
+    document.getElementById("image").addEventListener('change', function (event) {
         const file = event.target.files[0];
-        if(file){
+        if (file) {
             const reader = new FileReader();
-            reader.onload = function(e){
+            reader.onload = function (e) {
                 const imgTag = document.getElementById('image-prev');
                 imgTag.src = e.target.result;
                 document.getElementById('file-input-design').classList.add('d-none');
             };
             reader.readAsDataURL(file);
         }
-    } )
+    })
 
 
 });
@@ -289,7 +289,7 @@ async function login(email, password) {
 }
 
 // Attach an event listener to the form
-document.getElementById('loginForm').addEventListener('submit', function(event) {
+document.getElementById('loginForm').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the default form submission
 
     // Get the values from the form inputs

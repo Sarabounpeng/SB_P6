@@ -78,6 +78,10 @@
 		</nav>
 	</footer>
 
+
+	<!-- Les MODALES -->
+	<!-- Modale 1 -->
+
 	<div class="model d-none" id="workslist">
 		<span class="overlay"></span>
 		<div class="upload-work-wrapper">
@@ -97,11 +101,14 @@
 		</div>
 	</div>
 
+	<!-- Modale 2 -->
+
 	<div class="model d-none" id="uploadwork">
 		<span class="overlay"></span>
 		<div class="upload-work-wrapper">
 			<div class="model-icons">
-				<i class="fa-solid fa-arrow-left open-model"data-target="workslist"></i>  <i class="fa-solid fa-xmark close-model"></i>
+				<i class="fa-solid fa-arrow-left open-model" data-target="workslist"></i> <i
+					class="fa-solid fa-xmark close-model"></i>
 			</div>
 			<div class="form-layout">
 				<h2>Ajout photo</h2>
@@ -109,13 +116,13 @@
 				<form id="uploadForm" enctype="multipart/form-data">
 					<div id="ajouter-photo">
 						<img src="" class="image-prev" id="image-prev">
-					<div id="file-input-design">
-					    <i class="fa-regular fa-image" style="color: #ced2d9;"></i>
-						<span class="upload-span-btn">+ Ajouter Photo</span>	
-						<span>jpg, png : 4mo max</span>
+						<div id="file-input-design">
+							<i class="fa-regular fa-image" style="color: #ced2d9;"></i>
+							<span class="upload-span-btn">+ Ajouter Photo</span>
+							<span>jpg, png : 4mo max</span>
+						</div>
+						<input id="image" type="file" name="image" accept="image/*" required>
 					</div>
-					    <input id="image" type="file" name="image" accept="image/*" required>
-				    </div>
 					<label for="title">Titre</label>
 					<input id="title" type="text" name="title" placeholder="Title" required>
 
