@@ -234,7 +234,7 @@ window.onload = function () {
         document.getElementById('login').classList.add('d-none');
         document.getElementById('logout').classList.remove('d-none');
         document.getElementById('editWork').classList.remove('d-none');
-
+        document.getElementById('annancement').classList.remove('d-none');
         document.getElementById('filter').classList.add('d-none');
 
     }
@@ -249,6 +249,7 @@ function logout() {
     document.getElementById('logout').classList.add('d-none');
     document.getElementById('editWork').classList.add('d-none');
     document.getElementById('filter').classList.remove('d-none');
+    document.getElementById('annancement').classList.add('d-none');
 }
 
 // Attach event listener to the logout button
